@@ -3,1097 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>한국중앙교회 교회경영 AI 분석 및 컨설팅</title>
+    <title>Direct AI Media App</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
         body { font-family: 'Noto Sans KR', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-        .org-chart { background: linear-gradient(45deg, #f8fafc, #e2e8f0); }
-        .kpi-card { background: linear-gradient(135deg, #667eea, #764ba2); }
-        .process-step { position: relative; }
-        .process-step::after { content: ''; position: absolute; top: 50%; right: -20px; width: 0; height: 0; border-left: 15px solid #3b82f6; border-top: 10px solid transparent; border-bottom: 10px solid transparent; }
-        .process-step:last-child::after { display: none; }
+        .glass-card { background: rgba(15, 23, 42, 0.68); backdrop-filter: blur(18px); }
+        .status-box { transition: opacity 0.2s ease; }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Header -->
-    <header class="gradient-bg text-white py-16">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-5xl font-bold mb-4">한국중앙교회 교회경영 AI 분석 및 컨설팅</h1>
-            <p class="text-xl opacity-90 mb-8">Church Management AI Analysis & Consulting</p>
-            <div class="bg-white/20 backdrop-blur-sm rounded-lg p-6 max-w-4xl mx-auto">
-                <p class="text-lg mb-4">"본질로 돌아가는 교회(Back to the Essence)"를 행정 시스템에 구현</p>
-                <div class="border-t border-white/30 pt-4">
-                    <p class="text-sm opacity-80">미라클AI목회연구소 교회운영 및 행정 컨설팅</p>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Executive Summary -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">시스템 개발 목표</h2>
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="text-center card-hover bg-blue-50 p-8 rounded-xl">
-                    <div class="text-4xl mb-4">🎯</div>
-                    <h3 class="text-xl font-semibold mb-3 text-blue-800">비전 실현</h3>
-                    <p class="text-gray-600">본질로 돌아가는 교회를 행정 시스템에 구현</p>
-                </div>
-                <div class="text-center card-hover bg-green-50 p-8 rounded-xl">
-                    <div class="text-4xl mb-4">🔍</div>
-                    <h3 class="text-xl font-semibold mb-3 text-green-800">투명성과 신뢰</h3>
-                    <p class="text-gray-600">모든 재정·의사결정 과정을 교인과 공유</p>
-                </div>
-                <div class="text-center card-hover bg-purple-50 p-8 rounded-xl">
-                    <div class="text-4xl mb-4">⚡</div>
-                    <h3 class="text-xl font-semibold mb-3 text-purple-800">효율성과 전문성</h3>
-                    <p class="text-gray-600">대규모 교회에 맞는 분업·전문화 체계</p>
-                </div>
-                <div class="text-center card-hover bg-orange-50 p-8 rounded-xl">
-                    <div class="text-4xl mb-4">🚀</div>
-                    <h3 class="text-xl font-semibold mb-3 text-orange-800">혁신과 성장</h3>
-                    <p class="text-gray-600">디지털 전환과 미래 확장 플랫폼</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Governance Structure -->
-    <section class="py-16 org-chart">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">거버넌스 구조</h2>
-            <div class="max-w-6xl mx-auto">
-                <!-- CEO Level -->
-                <div class="text-center mb-8">
-                    <div class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-bold">담임목사</h3>
-                        <p class="text-sm opacity-90">CEO / Chief Vision Officer</p>
-                    </div>
-                </div>
-                
-                <!-- Board Level -->
-                <div class="flex justify-center gap-8 mb-8">
-                    <div class="bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg">
-                        <h3 class="text-lg font-bold">당회</h3>
-                        <p class="text-sm opacity-90">Board of Elders</p>
-                    </div>
-                    <div class="bg-purple-600 text-white px-6 py-4 rounded-lg shadow-lg">
-                        <h3 class="text-lg font-bold">경영혁신위원회</h3>
-                        <p class="text-sm opacity-90">Innovation Board</p>
-                    </div>
-                </div>
-                
-                <!-- Division Level -->
-                <div class="flex justify-center gap-12">
-                    <div class="text-center">
-                        <div class="bg-orange-600 text-white px-8 py-4 rounded-lg shadow-lg mb-4">
-                            <h3 class="text-lg font-bold">운영본부</h3>
-                            <p class="text-sm opacity-90">Operations HQ</p>
-                        </div>
-                        <div class="space-y-2 text-sm">
-                            <div class="bg-orange-100 px-4 py-2 rounded">재정실</div>
-                            <div class="bg-orange-100 px-4 py-2 rounded">인사·교육실</div>
-                            <div class="bg-orange-100 px-4 py-2 rounded">디지털혁신실</div>
-                            <div class="bg-orange-100 px-4 py-2 rounded">시설·자산실</div>
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <div class="bg-teal-600 text-white px-8 py-4 rounded-lg shadow-lg mb-4">
-                            <h3 class="text-lg font-bold">사역본부</h3>
-                            <p class="text-sm opacity-90">Ministry HQ</p>
-                        </div>
-                        <div class="space-y-2 text-sm">
-                            <div class="bg-teal-100 px-4 py-2 rounded">예배본부</div>
-                            <div class="bg-teal-100 px-4 py-2 rounded">교육본부</div>
-                            <div class="bg-teal-100 px-4 py-2 rounded">다음세대본부</div>
-                            <div class="bg-teal-100 px-4 py-2 rounded">선교본부</div>
-                            <div class="bg-teal-100 px-4 py-2 rounded">지역사회본부</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Department Details -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">부서별 상세 구성</h2>
-            
-            <!-- Operations HQ Details -->
-            <div class="mb-16">
-                <h3 class="text-3xl font-bold text-orange-600 mb-8 text-center">운영본부 상세 구성</h3>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="card-hover bg-orange-50 p-6 rounded-xl border-l-4 border-orange-500">
-                        <h4 class="text-xl font-bold text-orange-800 mb-4">💰 재정실</h4>
-                        <div class="space-y-2 text-sm text-gray-700">
-                            <p><strong>담당업무:</strong> 예산편성, 회계관리, 재정보고</p>
-                            <p><strong>구성인원:</strong> 실장(전임) + 회계사(외부) + 재정위원 5명</p>
-                            <p><strong>주요시스템:</strong> ERP 회계시스템, 온라인 헌금관리</p>
-                            <p><strong>보고체계:</strong> 월간 재정보고서 → 분기별 공개</p>
-                        </div>
-                    </div>
-                    <div class="card-hover bg-orange-50 p-6 rounded-xl border-l-4 border-orange-500">
-                        <h4 class="text-xl font-bold text-orange-800 mb-4">👥 인사·교육실</h4>
-                        <div class="space-y-2 text-sm text-gray-700">
-                            <p><strong>담당업무:</strong> 교역자 관리, 평신도 교육, 리더십 개발</p>
-                            <p><strong>구성인원:</strong> 실장(교육전도사) + HR 전문가 + 교육위원 7명</p>
-                            <p><strong>주요시스템:</strong> LMS 학습관리, 인사관리시스템</p>
-                            <p><strong>교육과정:</strong> 새가족반 → 제자훈련 → 리더십 과정</p>
-                        </div>
-                    </div>
-                    <div class="card-hover bg-orange-50 p-6 rounded-xl border-l-4 border-orange-500">
-                        <h4 class="text-xl font-bold text-orange-800 mb-4">💻 디지털혁신실</h4>
-                        <div class="space-y-2 text-sm text-gray-700">
-                            <p><strong>담당업무:</strong> IT 인프라, 온라인 사역, 데이터 분석</p>
-                            <p><strong>구성인원:</strong> 실장(IT 전문가) + 개발자 2명 + 디자이너 1명</p>
-                            <p><strong>주요시스템:</strong> 교회 앱, 온라인 예배, CRM 시스템</p>
-                            <p><strong>혁신과제:</strong> AI 상담봇, 메타버스 예배, 빅데이터 분석</p>
-                        </div>
-                    </div>
-                    <div class="card-hover bg-orange-50 p-6 rounded-xl border-l-4 border-orange-500">
-                        <h4 class="text-xl font-bold text-orange-800 mb-4">🏢 시설·자산실</h4>
-                        <div class="space-y-2 text-sm text-gray-700">
-                            <p><strong>담당업무:</strong> 건물관리, 자산관리, 보안·안전</p>
-                            <p><strong>구성인원:</strong> 실장(시설관리사) + 관리팀 3명 + 보안팀 2명</p>
-                            <p><strong>관리자산:</strong> 본당, 교육관, 주차장, 목양관, 선교관</p>
-                            <p><strong>스마트시설:</strong> IoT 센서, 에너지 관리, 출입통제</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Ministry HQ Details -->
-            <div>
-                <h3 class="text-3xl font-bold text-teal-600 mb-8 text-center">사역본부 상세 구성</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <div class="card-hover bg-teal-50 p-6 rounded-xl border-l-4 border-teal-500">
-                        <h4 class="text-xl font-bold text-teal-800 mb-4">⛪ 예배본부</h4>
-                        <div class="space-y-2 text-sm text-gray-700">
-                            <p><strong>담당목사:</strong> 예배담당 부목사</p>
-                            <p><strong>구성:</strong> 찬양팀, 성가대, 예배위원회</p>
-                            <p><strong>예배:</strong> 주일 3부, 수요예배, 새벽예배</p>
-                            <p><strong>특별사역:</strong> 절기예배, 야외예배, 온라인예배</p>
-                        </div>
-                    </div>
-                    <div class="card-hover bg-teal-50 p-6 rounded-xl border-l-4 border-teal-500">
-                        <h4 class="text-xl font-bold text-teal-800 mb-4">📚 교육본부</h4>
-                        <div class="space-y-2 text-sm text-gray-700">
-                            <p><strong>담당목사:</strong> 교육담당 부목사</p>
-                            <p><strong>구성:</strong> 성인교육부, 장년대학, 신학교</p>
-                            <p><strong>교육과정:</strong> 기초-심화-전문 3단계</p>
-                            <p><strong>특별과정:</strong> 성경대학, 리더십 아카데미</p>
-                        </div>
-                    </div>
-                    <div class="card-hover bg-teal-50 p-6 rounded-xl border-l-4 border-teal-500">
-                        <h4 class="text-xl font-bold text-teal-800 mb-4">👶 다음세대본부</h4>
-                        <div class="space-y-2 text-sm text-gray-700">
-                            <p><strong>담당목사:</strong> 다음세대 전담목사</p>
-                            <p><strong>구성:</strong> 유아부, 유치부, 초등부, 중고등부</p>
-                            <p><strong>특별사역:</strong> 여름성경학교, 수련회, 캠프</p>
-                            <p><strong>교육시설:</strong> 전용 교육관, 놀이시설, 카페</p>
-                        </div>
-                    </div>
-                    <div class="card-hover bg-teal-50 p-6 rounded-xl border-l-4 border-teal-500">
-                        <h4 class="text-xl font-bold text-teal-800 mb-4">🌍 선교본부</h4>
-                        <div class="space-y-2 text-sm text-gray-700">
-                            <p><strong>담당목사:</strong> 선교담당 부목사</p>
-                            <p><strong>구성:</strong> 국내선교부, 해외선교부, 단기선교팀</p>
-                            <p><strong>선교지역:</strong> 아시아 5개국, 국내 농어촌 10곳</p>
-                            <p><strong>선교사:</strong> 파송선교사 15가정, 협력선교사 25명</p>
-                        </div>
-                    </div>
-                    <div class="card-hover bg-teal-50 p-6 rounded-xl border-l-4 border-teal-500">
-                        <h4 class="text-xl font-bold text-teal-800 mb-4">🤝 지역사회본부</h4>
-                        <div class="space-y-2 text-sm text-gray-700">
-                            <p><strong>담당목사:</strong> 사회봉사 담당목사</p>
-                            <p><strong>구성:</strong> 사회봉사부, 상담센터, 문화사역부</p>
-                            <p><strong>봉사사역:</strong> 무료급식, 의료봉사, 교육지원</p>
-                            <p><strong>협력기관:</strong> 지역 NGO 5곳, 복지관 3곳</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Administrative Process -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">행정 프로세스</h2>
-            <div class="flex flex-wrap justify-center gap-4 max-w-6xl mx-auto">
-                <div class="process-step bg-blue-100 p-6 rounded-lg flex-1 min-w-48">
-                    <div class="text-3xl mb-3">📋</div>
-                    <h3 class="font-bold text-blue-800 mb-2">연간 전략 기획</h3>
-                    <p class="text-sm text-gray-600">각 본부별 연간계획 수립 → 운영본부 취합 → 당회 승인</p>
-                </div>
-                <div class="process-step bg-green-100 p-6 rounded-lg flex-1 min-w-48">
-                    <div class="text-3xl mb-3">💰</div>
-                    <h3 class="font-bold text-green-800 mb-2">예산 프로세스</h3>
-                    <p class="text-sm text-gray-600">부서별 예산 편성 → 예산위원회 심의 → 공동의회 승인</p>
-                </div>
-                <div class="process-step bg-purple-100 p-6 rounded-lg flex-1 min-w-48">
-                    <div class="text-3xl mb-3">⚙️</div>
-                    <h3 class="font-bold text-purple-800 mb-2">실행 관리</h3>
-                    <p class="text-sm text-gray-600">PMO 방식 → 프로젝트 단위 관리 → 교역자·평신도 공동 책임</p>
-                </div>
-                <div class="process-step bg-orange-100 p-6 rounded-lg flex-1 min-w-48">
-                    <div class="text-3xl mb-3">📊</div>
-                    <h3 class="font-bold text-orange-800 mb-2">성과 모니터링</h3>
-                    <p class="text-sm text-gray-600">월간 KPI 리포트 → 분기별 대시보드 공개 → 연간 감사보고서</p>
-                </div>
-                <div class="process-step bg-red-100 p-6 rounded-lg flex-1 min-w-48">
-                    <div class="text-3xl mb-3">🔄</div>
-                    <h3 class="font-bold text-red-800 mb-2">혁신 피드백</h3>
-                    <p class="text-sm text-gray-600">분기별 Review → 연 1회 혁신 서밋 → 파일럿 프로젝트 실행</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- KPI Dashboard -->
-    <section class="py-16 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">KPI & 성과지표 체계</h2>
-            
-            <!-- KPI Categories -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <div class="kpi-card text-white p-6 rounded-xl">
-                    <h3 class="text-lg font-bold mb-4">📊 영적 성과 지표</h3>
-                    <ul class="text-sm space-y-2 opacity-90">
-                        <li>• 월별 세례자 수</li>
-                        <li>• 제자훈련 수료율</li>
-                        <li>• 예배 참석률</li>
-                        <li>• 새가족 정착률</li>
-                    </ul>
-                </div>
-                <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-6 rounded-xl">
-                    <h3 class="text-lg font-bold mb-4">⚙️ 운영 성과 지표</h3>
-                    <ul class="text-sm space-y-2 opacity-90">
-                        <li>• CMS 등록 완료율</li>
-                        <li>• 교육 프로그램 이수율</li>
-                        <li>• 시설 가동률</li>
-                        <li>• 봉사자 참여율</li>
-                    </ul>
-                </div>
-                <div class="bg-gradient-to-br from-yellow-500 to-orange-500 text-white p-6 rounded-xl">
-                    <h3 class="text-lg font-bold mb-4">💰 재정 성과 지표</h3>
-                    <ul class="text-sm space-y-2 opacity-90">
-                        <li>• 예산 대비 집행률</li>
-                        <li>• 재정 투명도 점수</li>
-                        <li>• 외부 감사 적합률</li>
-                        <li>• 선교비 비율</li>
-                    </ul>
-                </div>
-                <div class="bg-gradient-to-br from-teal-500 to-cyan-500 text-white p-6 rounded-xl">
-                    <h3 class="text-lg font-bold mb-4">🤝 사회적 성과 지표</h3>
-                    <ul class="text-sm space-y-2 opacity-90">
-                        <li>• 지역사회 봉사 시간</li>
-                        <li>• NGO 협력 프로젝트 수</li>
-                        <li>• 사회적 약자 지원 건수</li>
-                        <li>• 지역 언론 긍정 보도</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Measurement Framework -->
-            <div class="bg-white p-8 rounded-xl shadow-lg">
-                <h3 class="text-2xl font-bold mb-6 text-center">측정 및 보고 체계</h3>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="text-center">
-                        <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl">📅</span>
-                        </div>
-                        <h4 class="font-bold text-blue-800 mb-2">월간 리포트</h4>
-                        <p class="text-gray-600 text-sm">각 부서별 핵심 지표 수집 및 분석</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl">📈</span>
-                        </div>
-                        <h4 class="font-bold text-green-800 mb-2">분기별 대시보드</h4>
-                        <p class="text-gray-600 text-sm">통합 성과 대시보드 공개 및 공유</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <span class="text-2xl">📋</span>
-                        </div>
-                        <h4 class="font-bold text-purple-800 mb-2">연간 종합 평가</h4>
-                        <p class="text-gray-600 text-sm">외부 감사 및 종합 성과 보고서</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sample Dashboard Preview -->
-            <div class="mt-12 bg-white p-8 rounded-xl shadow-lg">
-                <h3 class="text-2xl font-bold mb-6 text-center">대시보드 예시 (월간 리포트)</h3>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <div class="bg-blue-50 p-4 rounded-lg text-center">
-                        <h4 class="font-semibold text-blue-800 mb-2">예배 참석</h4>
-                        <div class="text-2xl font-bold text-blue-600">목표 대비</div>
-                        <div class="text-sm text-gray-600">실제 측정 후 표시</div>
-                    </div>
-                    <div class="bg-green-50 p-4 rounded-lg text-center">
-                        <h4 class="font-semibold text-green-800 mb-2">교육 참여</h4>
-                        <div class="text-2xl font-bold text-green-600">목표 대비</div>
-                        <div class="text-sm text-gray-600">실제 측정 후 표시</div>
-                    </div>
-                    <div class="bg-yellow-50 p-4 rounded-lg text-center">
-                        <h4 class="font-semibold text-yellow-800 mb-2">재정 집행</h4>
-                        <div class="text-2xl font-bold text-yellow-600">예산 대비</div>
-                        <div class="text-sm text-gray-600">실제 측정 후 표시</div>
-                    </div>
-                    <div class="bg-purple-50 p-4 rounded-lg text-center">
-                        <h4 class="font-semibold text-purple-800 mb-2">봉사 참여</h4>
-                        <div class="text-2xl font-bold text-purple-600">목표 대비</div>
-                        <div class="text-sm text-gray-600">실제 측정 후 표시</div>
-                    </div>
-                </div>
-                <div class="mt-6 text-center">
-                    <p class="text-gray-500 text-sm">* 실제 운영 시작 후 데이터 수집을 통해 구체적인 수치가 표시됩니다</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Risk Analysis -->
-    <section class="py-16 bg-red-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 text-red-800">위험 요소 분석</h2>
-            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                <div class="card-hover bg-white p-8 rounded-xl border-l-4 border-red-500 shadow-lg">
-                    <h3 class="text-xl font-bold text-red-800 mb-4">⚠️ 조직 운영 위험</h3>
-                    <div class="space-y-3 text-gray-700">
-                        <div class="flex items-start gap-3">
-                            <span class="text-red-500 font-bold">•</span>
-                            <div>
-                                <p class="font-semibold">권한 분산으로 인한 의사결정 지연</p>
-                                <p class="text-sm text-gray-600">→ 대응: 명확한 권한 매트릭스 및 에스컬레이션 프로세스 구축</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="text-red-500 font-bold">•</span>
-                            <div>
-                                <p class="font-semibold">부서 간 소통 단절 및 사일로 현상</p>
-                                <p class="text-sm text-gray-600">→ 대응: 월간 통합회의, 크로스펑셔널 프로젝트 운영</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="text-red-500 font-bold">•</span>
-                            <div>
-                                <p class="font-semibold">전문 인력 확보 및 유지의 어려움</p>
-                                <p class="text-sm text-gray-600">→ 대응: 경쟁력 있는 처우, 교육 기회 제공, 비전 공유</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card-hover bg-white p-8 rounded-xl border-l-4 border-orange-500 shadow-lg">
-                    <h3 class="text-xl font-bold text-orange-800 mb-4">💰 재정 운영 위험</h3>
-                    <div class="space-y-3 text-gray-700">
-                        <div class="flex items-start gap-3">
-                            <span class="text-orange-500 font-bold">•</span>
-                            <div>
-                                <p class="font-semibold">시스템 구축 초기 비용 부담</p>
-                                <p class="text-sm text-gray-600">→ 대응: 단계적 도입, 외부 지원금 활용, ROI 기반 우선순위</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="text-orange-500 font-bold">•</span>
-                            <div>
-                                <p class="font-semibold">헌금 감소 시 운영비 부담 증가</p>
-                                <p class="text-sm text-gray-600">→ 대응: 다양한 수입원 개발, 비용 효율화, 비상 기금 조성</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="text-orange-500 font-bold">•</span>
-                            <div>
-                                <p class="font-semibold">투명성 강화로 인한 일시적 혼란</p>
-                                <p class="text-sm text-gray-600">→ 대응: 점진적 공개, 충분한 설명과 소통, 교육 프로그램</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-hover bg-white p-8 rounded-xl border-l-4 border-purple-500 shadow-lg">
-                    <h3 class="text-xl font-bold text-purple-800 mb-4">🔧 기술 시스템 위험</h3>
-                    <div class="space-y-3 text-gray-700">
-                        <div class="flex items-start gap-3">
-                            <span class="text-purple-500 font-bold">•</span>
-                            <div>
-                                <p class="font-semibold">시스템 장애 및 데이터 손실 위험</p>
-                                <p class="text-sm text-gray-600">→ 대응: 이중화 시스템, 정기 백업, 재해복구 계획</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="text-purple-500 font-bold">•</span>
-                            <div>
-                                <p class="font-semibold">개인정보 보호 및 보안 이슈</p>
-                                <p class="text-sm text-gray-600">→ 대응: 보안 인증 취득, 정기 보안 점검, 교육 실시</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="text-purple-500 font-bold">•</span>
-                            <div>
-                                <p class="font-semibold">디지털 격차로 인한 소외 계층 발생</p>
-                                <p class="text-sm text-gray-600">→ 대응: 디지털 교육 강화, 오프라인 병행, 맞춤형 지원</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-hover bg-white p-8 rounded-xl border-l-4 border-blue-500 shadow-lg">
-                    <h3 class="text-xl font-bold text-blue-800 mb-4">👥 교인 관계 위험</h3>
-                    <div class="space-y-3 text-gray-700">
-                        <div class="flex items-start gap-3">
-                            <span class="text-blue-500 font-bold">•</span>
-                            <div>
-                                <p class="font-semibold">급격한 변화에 대한 저항 및 갈등</p>
-                                <p class="text-sm text-gray-600">→ 대응: 충분한 사전 소통, 단계적 변화, 피드백 수렴</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="text-blue-500 font-bold">•</span>
-                            <div>
-                                <p class="font-semibold">기존 봉사자들의 역할 축소 우려</p>
-                                <p class="text-sm text-gray-600">→ 대응: 새로운 역할 제시, 재교육 기회, 인정과 격려</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <span class="text-blue-500 font-bold">•</span>
-                            <div>
-                                <p class="font-semibold">세대 간 시스템 적응도 차이</p>
-                                <p class="text-sm text-gray-600">→ 대응: 세대별 맞춤 교육, 멘토링 시스템, 점진적 적용</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Financial Strategy -->
-    <section class="py-16 bg-gradient-to-br from-green-50 to-emerald-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 text-green-800">재정 확보 전략</h2>
-            
-            <!-- Revenue Diversification -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-center mb-8 text-green-700">수입원 다각화 전략</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="card-hover bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500">
-                        <div class="text-3xl mb-4 text-center">💰</div>
-                        <h4 class="text-lg font-bold text-green-800 mb-3 text-center">전통적 헌금</h4>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• 십일조 자동이체 시스템 구축</li>
-                            <li>• 감사헌금 디지털화</li>
-                            <li>• 특별헌금 프로젝트별 관리</li>
-                            <li>• 유산기부 상담 서비스</li>
-                        </ul>
-                        <div class="mt-4 text-center">
-                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">목표: 전체 수입의 70%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card-hover bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
-                        <div class="text-3xl mb-4 text-center">🏢</div>
-                        <h4 class="text-lg font-bold text-blue-800 mb-3 text-center">시설 활용 수익</h4>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• 교육관 대관 사업</li>
-                            <li>• 주차장 유료 운영</li>
-                            <li>• 카페테리아 운영</li>
-                            <li>• 컨퍼런스 센터 운영</li>
-                        </ul>
-                        <div class="mt-4 text-center">
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">목표: 전체 수입의 15%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card-hover bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500">
-                        <div class="text-3xl mb-4 text-center">📚</div>
-                        <h4 class="text-lg font-bold text-purple-800 mb-3 text-center">교육 사업</h4>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• 평생교육원 운영</li>
-                            <li>• 온라인 강의 플랫폼</li>
-                            <li>• 자격증 과정 개설</li>
-                            <li>• 기업 연수 프로그램</li>
-                        </ul>
-                        <div class="mt-4 text-center">
-                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-semibold">목표: 전체 수입의 10%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card-hover bg-white p-6 rounded-xl shadow-lg border-l-4 border-orange-500">
-                        <div class="text-3xl mb-4 text-center">🤝</div>
-                        <h4 class="text-lg font-bold text-orange-800 mb-3 text-center">사회적 기업</h4>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• 공정무역 상품 판매</li>
-                            <li>• 사회적 협동조합 운영</li>
-                            <li>• 정부 지원사업 참여</li>
-                            <li>• 기업 CSR 파트너십</li>
-                        </ul>
-                        <div class="mt-4 text-center">
-                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs font-semibold">목표: 전체 수입의 5%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Financial Management System -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-center mb-8 text-green-700">재정 관리 시스템</h3>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h4 class="text-xl font-bold text-green-800 mb-6">💳 디지털 헌금 시스템</h4>
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-3">
-                                <div class="bg-green-100 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span class="text-green-600 font-bold text-sm">1</span>
-                                </div>
-                                <div>
-                                    <p class="font-semibold">모바일 앱 통합 결제</p>
-                                    <p class="text-sm text-gray-600">카드, 계좌이체, 간편결제 지원</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="bg-green-100 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span class="text-green-600 font-bold text-sm">2</span>
-                                </div>
-                                <div>
-                                    <p class="font-semibold">자동 십일조 시스템</p>
-                                    <p class="text-sm text-gray-600">소득 연동 자동 계산 및 이체</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-3">
-                                <div class="bg-green-100 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <span class="text-green-600 font-bold text-sm">3</span>
-                                </div>
-                                <div>
-                                    <p class="font-semibold">헌금 내역 투명 공개</p>
-                                    <p class="text-sm text-gray-600">개인별 헌금 내역 및 사용처 안내</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h4 class="text-xl font-bold text-green-800 mb-6">📊 예산 관리 체계</h4>
-                        <div class="space-y-4">
-                            <div class="bg-green-50 p-4 rounded-lg">
-                                <h5 class="font-semibold text-green-800 mb-2">예산 배분 원칙</h5>
-                                <div class="text-sm text-gray-700 space-y-1">
-                                    <p>• 사역비: 40% (예배, 교육, 선교)</p>
-                                    <p>• 운영비: 35% (인건비, 시설비)</p>
-                                    <p>• 적립금: 15% (건축, 비상기금)</p>
-                                    <p>• 사회봉사: 10% (지역사회 환원)</p>
-                                </div>
-                            </div>
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h5 class="font-semibold text-blue-800 mb-2">재정 통제 시스템</h5>
-                                <div class="text-sm text-gray-700 space-y-1">
-                                    <p>• 3단계 승인 체계 (부서→본부→당회)</p>
-                                    <p>• 월간 예산 대비 실행률 모니터링</p>
-                                    <p>• 분기별 외부 회계감사</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Investment Strategy -->
-            <div>
-                <h3 class="text-2xl font-bold text-center mb-8 text-green-700">자산 운용 전략</h3>
-                <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="text-center">
-                            <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span class="text-2xl">🏦</span>
-                            </div>
-                            <h4 class="font-bold text-green-800 mb-3">안전 자산 (60%)</h4>
-                            <ul class="text-sm text-gray-600 space-y-1">
-                                <li>• 정기예금</li>
-                                <li>• 국공채</li>
-                                <li>• 안전한 MMF</li>
-                            </ul>
-                        </div>
-                        <div class="text-center">
-                            <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <span class="text-2xl">📈</span>
-                            </div>
-                            <h4 class="font-bold text-blue-800 mb-3">성장 자산 (30%)</h4>
-                            <ul class="text-sm text-gray-600 space-y-1">
-                                <li>• ESG 펀드</li>
-                                <li>• 부동산 투자</li>
-                                <li>• 사회적 채권</li>
-                            </ul>
-                        </div>
-                        <div class="text-center">
-                            <div class="bg-purple-100 w-16 h-16 rounded-full flex itemscenter justify-center mx-auto mb-4">
-                                <span class="text-2xl">🌱</span>
-                            </div>
-                            <h4 class="font-bold text-purple-800 mb-3">임팩트 투자 (10%)</h4>
-                            <ul class="text-sm text-gray-600 space-y-1">
-                                <li>• 사회적 기업 투자</li>
-                                <li>• 선교지 개발 프로젝트</li>
-                                <li>• 교육 인프라 투자</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Evangelism Strategy -->
-    <section class="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 text-blue-800">전도 전략</h2>
-            
-            <!-- Digital Evangelism -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-center mb-8 text-blue-700">디지털 전도 플랫폼</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="card-hover bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
-                        <div class="text-3xl mb-4 text-center">📱</div>
-                        <h4 class="text-lg font-bold text-blue-800 mb-3 text-center">모바일 전도 앱</h4>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• AI 챗봇 상담 서비스</li>
-                            <li>• 개인 맞춤형 성경 읽기</li>
-                            <li>• 온라인 새가족반</li>
-                            <li>• 기도 요청 플랫폼</li>
-                        </ul>
-                        <div class="mt-4 text-center">
-                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs font-semibold">목표: 월 1,000명 접촉</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card-hover bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-500">
-                        <div class="text-3xl mb-4 text-center">📺</div>
-                        <h4 class="text-lg font-bold text-red-800 mb-3 text-center">온라인 방송</h4>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• 유튜브 라이브 예배</li>
-                            <li>• 팟캐스트 말씀 시리즈</li>
-                            <li>• 인스타그램 라이브 토크</li>
-                            <li>• 틱톡 짧은 메시지</li>
-                        </ul>
-                        <div class="mt-4 text-center">
-                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-semibold">목표: 구독자 10만명</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card-hover bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500">
-                        <div class="text-3xl mb-4 text-center">🌐</div>
-                        <h4 class="text-lg font-bold text-green-800 mb-3 text-center">메타버스 교회</h4>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• 가상현실 예배 공간</li>
-                            <li>• 3D 아바타 교제</li>
-                            <li>• 온라인 소그룹 모임</li>
-                            <li>• 디지털 성지순례</li>
-                        </ul>
-                        <div class="mt-4 text-center">
-                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">목표: 월 500명 참여</span>
-                        </div>
-                    </div>
-                    
-                    <div class="card-hover bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500">
-                        <div class="text-3xl mb-4 text-center">💬</div>
-                        <h4 class="text-lg font-bold text-purple-800 mb-3 text-center">SNS 전도</h4>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• 카카오톡 채널 운영</li>
-                            <li>• 페이스북 커뮤니티</li>
-                            <li>• 네이버 카페 활동</li>
-                            <li>• 블로그 간증 스토리</li>
-                        </ul>
-                        <div class="mt-4 text-center">
-                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-semibold">목표: 팔로워 5만명</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Community Outreach -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-center mb-8 text-blue-700">지역사회 전도 전략</h3>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h4 class="text-xl font-bold text-blue-800 mb-6">🏘️ 생활밀착형 전도</h4>
-                        <div class="space-y-4">
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h5 class="font-semibold text-blue-800 mb-2">커뮤니티 센터 운영</h5>
-                                <ul class="text-sm text-gray-700 space-y-1">
-                                    <li>• 육아맘 카페 & 놀이방</li>
-                                    <li>• 시니어 건강교실</li>
-                                    <li>• 청소년 진로상담센터</li>
-                                    <li>• 다문화가정 지원센터</li>
-                                </ul>
-                            </div>
-                            <div class="bg-green-50 p-4 rounded-lg">
-                                <h5 class="font-semibold text-green-800 mb-2">사회봉사 프로그램</h5>
-                                <ul class="text-sm text-gray-700 space-y-1">
-                                    <li>• 무료 급식소 운영</li>
-                                    <li>• 의료진 무료 진료</li>
-                                    <li>• 법무팀 무료 상담</li>
-                                    <li>• 교육봉사 프로그램</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white p-8 rounded-xl shadow-lg">
-                        <h4 class="text-xl font-bold text-blue-800 mb-6">🎯 타겟별 전도 전략</h4>
-                        <div class="space-y-4">
-                            <div class="border-l-4 border-yellow-400 pl-4">
-                                <h5 class="font-semibold text-yellow-700 mb-1">직장인 대상</h5>
-                                <p class="text-sm text-gray-600">새벽 예배, 점심 성경공부, 직장인 네트워킹</p>
-                            </div>
-                            <div class="border-l-4 border-pink-400 pl-4">
-                                <h5 class="font-semibold text-pink-700 mb-1">주부 대상</h5>
-                                <p class="text-sm text-gray-600">육아 품앗이, 요리교실, 가정경제 세미나</p>
-                            </div>
-                            <div class="border-l-4 border-indigo-400 pl-4">
-                                <h5 class="font-semibold text-indigo-700 mb-1">청년 대상</h5>
-                                <p class="text-sm text-gray-600">취업 멘토링, 창업 지원, 문화 이벤트</p>
-                            </div>
-                            <div class="border-l-4 border-teal-400 pl-4">
-                                <h5 class="font-semibold text-teal-700 mb-1">시니어 대상</h5>
-                                <p class="text-sm text-gray-600">건강관리, 취미활동, 실버 대학</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Evangelism Process -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-center mb-8 text-blue-700">전도 프로세스 체계</h3>
-                <div class="flex flex-wrap justify-center gap-4 max-w-6xl mx-auto">
-                    <div class="process-step bg-yellow-100 p-6 rounded-lg flex-1 min-w-48">
-                        <div class="text-3xl mb-3">🎯</div>
-                        <h4 class="font-bold text-yellow-800 mb-2">접촉 (Contact)</h4>
-                        <p class="text-sm text-gray-600">온라인/오프라인 다양한 채널을 통한 첫 만남</p>
-                    </div>
-                    <div class="process-step bg-orange-100 p-6 rounded-lg flex-1 min-w-48">
-                        <div class="text-3xl mb-3">🤝</div>
-                        <h4 class="font-bold text-orange-800 mb-2">관계 (Connect)</h4>
-                        <p class="text-sm text-gray-600">신뢰 관계 구축 및 지속적인 소통</p>
-                    </div>
-                    <div class="process-step bg-green-100 p-6 rounded-lg flex-1 min-w-48">
-                        <div class="text-3xl mb-3">💝</div>
-                        <h4 class="font-bold text-green-800 mb-2">돌봄 (Care)</h4>
-                        <p class="text-sm text-gray-600">실제적 필요 충족 및 사랑 실천</p>
-                    </div>
-                    <div class="process-step bg-blue-100 p-6 rounded-lg flex-1 min-w-48">
-                        <div class="text-3xl mb-3">✝️</div>
-                        <h4 class="font-bold text-blue-800 mb-2">전도 (Convert)</h4>
-                        <p class="text-sm text-gray-600">복음 제시 및 결신 초청</p>
-                    </div>
-                    <div class="process-step bg-purple-100 p-6 rounded-lg flex-1 min-w-48">
-                        <div class="text-3xl mb-3">🌱</div>
-                        <h4 class="font-bold text-purple-800 mb-2">양육 (Cultivate)</h4>
-                        <p class="text-sm text-gray-600">새가족 정착 및 제자훈련</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Evangelism KPIs -->
-            <div>
-                <h3 class="text-2xl font-bold text-center mb-8 text-blue-700">전도 성과 지표</h3>
-                <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div class="text-center p-4 bg-blue-50 rounded-lg">
-                            <div class="text-2xl font-bold text-blue-600 mb-2">목표 설정</div>
-                            <h4 class="font-semibold text-blue-800 mb-2">연간 전도 목표</h4>
-                            <ul class="text-sm text-gray-600 space-y-1">
-                                <li>• 새가족: 500명</li>
-                                <li>• 세례자: 300명</li>
-                                <li>• 정착률: 70%</li>
-                            </ul>
-                        </div>
-                        <div class="text-center p-4 bg-green-50 rounded-lg">
-                            <div class="text-2xl font-bold text-green-600 mb-2">접촉 지표</div>
-                            <h4 class="font-semibold text-green-800 mb-2">월간 접촉 현황</h4>
-                            <ul class="text-sm text-gray-600 space-y-1">
-                                <li>• 온라인: 2,000명</li>
-                                <li>• 오프라인: 800명</li>
-                                <li>• 재방문률: 30%</li>
-                            </ul>
-                        </div>
-                        <div class="text-center p-4 bg-yellow-50 rounded-lg">
-                            <div class="text-2xl font-bold text-yellow-600 mb-2">참여 지표</div>
-                            <h4 class="font-semibold text-yellow-800 mb-2">프로그램 참여</h4>
-                            <ul class="text-sm text-gray-600 space-y-1">
-                                <li>• 새가족반: 80%</li>
-                                <li>• 소그룹: 60%</li>
-                                <li>• 봉사활동: 40%</li>
-                            </ul>
-                        </div>
-                        <div class="text-center p-4 bg-purple-50 rounded-lg">
-                            <div class="text-2xl font-bold text-purple-600 mb-2">성장 지표</div>
-                            <h4 class="font-semibold text-purple-800 mb-2">영적 성장도</h4>
-                            <ul class="text-sm text-gray-600 space-y-1">
-                                <li>• 제자훈련: 50%</li>
-                                <li>• 리더 양성: 20%</li>
-                                <li>• 전도 참여: 30%</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Expected Benefits -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">기대 효과</h2>
-            
-            <!-- Short-term Benefits -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-center mb-8 text-green-700">단기 효과 (6개월~1년)</h3>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="card-hover bg-green-50 p-6 rounded-xl border-l-4 border-green-500">
-                        <h4 class="text-lg font-bold text-green-800 mb-3">📊 운영 효율성 향상</h4>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• 업무 프로세스 표준화로 처리 시간 30% 단축</li>
-                            <li>• 중복 업무 제거로 인력 효율성 증대</li>
-                            <li>• 실시간 데이터 기반 의사결정 가능</li>
-                        </ul>
-                    </div>
-                    <div class="card-hover bg-green-50 p-6 rounded-xl border-l-4 border-green-500">
-                        <h4 class="text-lg font-bold text-green-800 mb-3">💰 재정 투명성 확보</h4>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• 월간 재정 보고서 자동 생성</li>
-                            <li>• 예산 대비 실행률 실시간 모니터링</li>
-                            <li>• 교인 대상 분기별 재정 설명회 정례화</li>
-                        </ul>
-                    </div>
-                    <div class="card-hover bg-green-50 p-6 rounded-xl border-l-4 border-green-500">
-                        <h4 class="text-lg font-bold text-green-800 mb-3">🎯 사역 품질 개선</h4>
-                        <ul class="text-sm text-gray-700 space-y-2">
-                            <li>• 체계적인 교육 프로그램 운영</li>
-                            <li>• 새가족 관리 시스템 구축</li>
-                            <li>• 온라인-오프라인 통합 사역 플랫폼</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Medium-term Benefits -->
-            <div class="mb-16">
-                <h3 class="text-2xl font-bold text-center mb-8 text-blue-700">중기 효과 (1~3년)</h3>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="card-hover bg-blue-50 p-8 rounded-xl border-l-4 border-blue-500">
-                        <h4 class="text-xl font-bold text-blue-800 mb-4">🏛️ 조직 역량 강화</h4>
-                        <ul class="text-gray-700 space-y-3">
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 font-bold">•</span>
-                                <span>전문성 기반 부서별 특화 역량 구축</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 font-bold">•</span>
-                                <span>데이터 기반 전략 수립 및 실행 체계 정착</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 font-bold">•</span>
-                                <span>리더십 파이프라인 구축으로 지속가능한 성장</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 font-bold">•</span>
-                                <span>혁신 문화 정착으로 변화 적응력 향상</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card-hover bg-blue-50 p-8 rounded-xl border-l-4 border-blue-500">
-                        <h4 class="text-xl font-bold text-blue-800 mb-4">🤝 대외 신뢰도 향상</h4>
-                        <ul class="text-gray-700 space-y-3">
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 font-bold">•</span>
-                                <span>지역사회 내 모범 교회로서의 위상 확립</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 font-bold">•</span>
-                                <span>정부 및 공공기관과의 협력 관계 강화</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 font-bold">•</span>
-                                <span>언론 및 사회적 평가 개선</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-500 font-bold">•</span>
-                                <span>타 교회의 벤치마킹 대상으로 부상</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Long-term Benefits -->
-            <div>
-                <h3 class="text-2xl font-bold text-center mb-8 text-purple-700">장기 효과 (3~5년)</h3>
-                <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="card-hover bg-purple-50 p-8 rounded-xl border-l-4 border-purple-500">
-                        <h4 class="text-xl font-bold text-purple-800 mb-4">🚀 성장 동력 확보</h4>
-                        <div class="space-y-4 text-gray-700">
-                            <div>
-                                <p class="font-semibold mb-2">지속가능한 성장 모델 구축</p>
-                                <p class="text-sm">• 시스템 기반 확장성 확보로 규모 증가에 대응</p>
-                                <p class="text-sm">• 다음세대 중심의 미래 지향적 교회 모델</p>
-                            </div>
-                            <div>
-                                <p class="font-semibold mb-2">혁신 생태계 조성</p>
-                                <p class="text-sm">• 교회 내 창업 인큐베이팅 프로그램</p>
-                                <p class="text-sm">• 사회적 기업 및 NGO와의 협력 네트워크</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-hover bg-purple-50 p-8 rounded-xl border-l-4 border-purple-500">
-                        <h4 class="text-xl font-bold text-purple-800 mb-4">🌍 선교 플랫폼 확장</h4>
-                        <div class="space-y-4 text-gray-700">
-                            <div>
-                                <p class="font-semibold mb-2">글로벌 선교 네트워크 구축</p>
-                                <p class="text-sm">• 디지털 플랫폼 기반 국제 협력 확대</p>
-                                <p class="text-sm">• 선교지 교회 시스템 컨설팅 사업</p>
-                            </div>
-                            <div>
-                                <p class="font-semibold mb-2">사회적 영향력 확대</p>
-                                <p class="text-sm">• 지역사회 문제 해결의 핵심 주체로 성장</p>
-                                <p class="text-sm">• 국가 정책 수립에 기여하는 싱크탱크 역할</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Conclusion -->
-    <section class="py-16 gradient-bg text-white">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-8">결론</h2>
-            <div class="max-w-4xl mx-auto bg-white/20 backdrop-blur-sm rounded-xl p-8">
-                <p class="text-xl mb-6 leading-relaxed">
-                    한국중앙교회의 운영 및 행정 시스템은 단순 관리가 아니라 
-                    <strong>"본질은 전통적으로, 운영은 혁신적으로"</strong>라는 하이브리드 모델이어야 합니다.
+<body class="bg-slate-950 text-white">
+    <div class="min-h-screen flex flex-col">
+        <header class="bg-gradient-to-br from-indigo-600 via-blue-600 to-slate-900">
+            <div class="max-w-6xl mx-auto px-6 py-16 text-center">
+                <p class="uppercase tracking-[0.35em] text-indigo-200 text-sm mb-4">Direct AI Media Flow</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">프롬프트에서 SORA2 영상까지 한 번에</h1>
+                <p class="text-base md:text-lg text-indigo-100 leading-relaxed max-w-3xl mx-auto">
+                    아이디어를 입력하고 프롬프트를 다듬은 뒤, 즉시 이미지와 SORA2 영상을 생성하는 단일 파이프라인을 제공합니다.
+                    아래 세 단계만으로 교회 사역에 필요한 비주얼 자료를 완성해보세요.
                 </p>
-                <p class="text-lg mb-8 opacity-90">
-                    온누리교회의 선교 지향성과 사랑의교회의 행정·교육 시스템을 통합하면서, 
-                    디지털 전환과 데이터 기반 의사결정을 핵심 엔진으로 삼는 것이 최선입니다.
-                </p>
-                <button onclick="showImplementationPlan()" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition-colors">
-                    구현 계획 보기
-                </button>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <div class="mb-4">
-                <h3 class="text-xl font-bold mb-2">미라클AI목회연구소</h3>
-                <p class="text-gray-300">AI 분석 및 컨설팅 전문기관</p>
-            </div>
-            <div class="border-t border-gray-700 pt-4">
-                <p class="text-sm text-gray-400">© 2025 미라클AI목회연구소. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+        <main class="flex-1">
+            <section class="py-16">
+                <div class="max-w-6xl mx-auto px-6">
+                    <div class="grid gap-8 lg:grid-cols-3">
+                        <!-- Step 1: Prompt Builder -->
+                        <div class="glass-card border border-slate-700 rounded-3xl p-6 flex flex-col">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="h-10 w-10 rounded-full bg-indigo-500 flex items-center justify-center font-semibold">1</span>
+                                <div>
+                                    <h2 class="text-xl font-semibold">프롬프트 생성</h2>
+                                    <p class="text-slate-300 text-sm">아이디어에 맞는 스타일과 무드를 선택해보세요.</p>
+                                </div>
+                            </div>
 
-    <!-- Implementation Plan Modal -->
-    <div id="implementationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white rounded-xl p-8 max-w-2xl mx-4 max-h-96 overflow-y-auto">
-            <h3 class="text-2xl font-bold mb-6 text-gray-800">구현 계획</h3>
-            <div class="space-y-4">
-                <div class="border-l-4 border-blue-500 pl-4">
-                    <h4 class="font-bold text-blue-800">1단계 (1-3개월): 기반 구축</h4>
-                    <p class="text-gray-600">거버넌스 구조 설계, 핵심 인력 배치, 기본 시스템 도입</p>
+                            <label for="baseIdea" class="text-sm text-slate-300 mb-2">기본 아이디어</label>
+                            <textarea id="baseIdea" rows="3" class="w-full rounded-2xl bg-slate-900/70 border border-slate-700 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-4" placeholder="예: 청년 예배 홍보를 위한 모던한 포스터"></textarea>
+
+                            <div class="grid grid-cols-2 gap-3 mb-4 text-sm">
+                                <div>
+                                    <label for="stylePreset" class="block text-slate-300 mb-1">스타일</label>
+                                    <select id="stylePreset" class="w-full rounded-xl bg-slate-900/70 border border-slate-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                        <option value="hyper-realistic digital painting">하이퍼 리얼 디지털 페인팅</option>
+                                        <option value="cinematic concept art">시네마틱 콘셉트 아트</option>
+                                        <option value="studio photography">스튜디오 사진</option>
+                                        <option value="watercolor illustration">수채화 일러스트</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="moodPreset" class="block text-slate-300 mb-1">무드</label>
+                                    <select id="moodPreset" class="w-full rounded-xl bg-slate-900/70 border border-slate-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                        <option value="warm and hopeful">따뜻하고 희망적인</option>
+                                        <option value="dynamic and energetic">역동적이고 에너지 넘치는</option>
+                                        <option value="calm and reverent">차분하고 경건한</option>
+                                        <option value="festive and joyful">축제 같고 즐거운</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="cameraPreset" class="block text-slate-300 mb-1">카메라/연출</label>
+                                    <select id="cameraPreset" class="w-full rounded-xl bg-slate-900/70 border border-slate-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                        <option value="wide angle lens, soft rim lighting">광각 렌즈, 부드러운 림라이팅</option>
+                                        <option value="50mm lens, shallow depth of field">50mm 렌즈, 얕은 심도</option>
+                                        <option value="top-down view, volumetric light">탑뷰, 볼류메트릭 라이트</option>
+                                        <option value="steadycam shot, golden hour">스테디캠, 골든 아워</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="ratioPreset" class="block text-slate-300 mb-1">화면비</label>
+                                    <select id="ratioPreset" class="w-full rounded-xl bg-slate-900/70 border border-slate-700 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                        <option value="--ar 16:9">16:9 (와이드)</option>
+                                        <option value="--ar 1:1">1:1 (정사각)</option>
+                                        <option value="--ar 9:16">9:16 (세로)</option>
+                                        <option value="--ar 21:9">21:9 (시네마)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <label for="extraKeywords" class="text-sm text-slate-300 mb-2">추가 키워드 (콤마로 구분)</label>
+                            <input id="extraKeywords" type="text" class="w-full rounded-2xl bg-slate-900/70 border border-slate-700 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-4" placeholder="예: joyful worship, modern typography, glowing lights">
+
+                            <label for="promptOutput" class="text-sm text-slate-300 mb-2">생성된 프롬프트</label>
+                            <textarea id="promptOutput" rows="5" class="w-full rounded-2xl bg-slate-900/70 border border-slate-700 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-4" placeholder="버튼을 눌러 프롬프트를 생성하세요."></textarea>
+
+                            <button id="promptBtn" onclick="generatePrompt()" class="mt-auto bg-indigo-500 hover:bg-indigo-400 transition-colors text-sm font-semibold rounded-xl px-4 py-3">
+                                프롬프트 생성
+                            </button>
+                            <div id="promptStatus" class="status-box text-sm text-slate-300 mt-3"></div>
+                        </div>
+
+                        <!-- Step 2: Image Generator -->
+                        <div class="glass-card border border-slate-700 rounded-3xl p-6 flex flex-col">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="h-10 w-10 rounded-full bg-emerald-500 flex items-center justify-center font-semibold">2</span>
+                                <div>
+                                    <h2 class="text-xl font-semibold">이미지 생성</h2>
+                                    <p class="text-slate-300 text-sm">생성된 프롬프트로 미리보기를 업데이트합니다.</p>
+                                </div>
+                            </div>
+
+                            <div class="aspect-video rounded-2xl overflow-hidden border border-slate-700 bg-slate-900/60 mb-4 flex items-center justify-center">
+                                <img id="imagePreview" src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=900&q=80" alt="AI 이미지 미리보기" class="w-full h-full object-cover">
+                            </div>
+                            <p class="text-xs text-slate-400 mb-4">운영 환경에서는 실제 이미지 생성 API 응답을 연결하세요.</p>
+
+                            <button id="imageBtn" onclick="generateImage()" class="bg-emerald-500 hover:bg-emerald-400 transition-colors text-sm font-semibold rounded-xl px-4 py-3 flex items-center justify-center gap-2">
+                                <span id="imageSpinner" class="hidden h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                                이미지 생성 실행
+                            </button>
+                            <div id="imageStatus" class="status-box text-sm text-slate-300 mt-3"></div>
+                        </div>
+
+                        <!-- Step 3: Video Generator -->
+                        <div class="glass-card border border-slate-700 rounded-3xl p-6 flex flex-col">
+                            <div class="flex items-center gap-3 mb-6">
+                                <span class="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center font-semibold">3</span>
+                                <div>
+                                    <h2 class="text-xl font-semibold">SORA2 영상 생성</h2>
+                                    <p class="text-slate-300 text-sm">최종 프롬프트로 SORA2 영상 변환을 요청하세요.</p>
+                                </div>
+                            </div>
+
+                            <label for="videoPromptInput" class="text-sm text-slate-300 mb-2">영상 프롬프트</label>
+                            <textarea id="videoPromptInput" rows="4" class="w-full rounded-2xl bg-slate-900/70 border border-slate-700 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4" placeholder="이미지 프롬프트를 기반으로 자동 입력되며 수정할 수 있습니다."></textarea>
+
+                            <div class="aspect-video rounded-2xl overflow-hidden border border-slate-700 bg-slate-900/60 mb-4 flex items-center justify-center">
+                                <video id="videoPreview" class="w-full h-full" controls poster="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80">
+                                    <source src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4" type="video/mp4">
+                                    브라우저가 비디오 태그를 지원하지 않습니다.
+                                </video>
+                            </div>
+                            <p class="text-xs text-slate-400 mb-4">SORA2 API 연결 시 변환된 영상 URL을 표시합니다.</p>
+
+                            <button id="videoBtn" onclick="generateVideo()" class="bg-blue-500 hover:bg-blue-400 transition-colors text-sm font-semibold rounded-xl px-4 py-3 flex items-center justify-center gap-2">
+                                <span id="videoSpinner" class="hidden h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                                영상 생성 요청
+                            </button>
+                            <div id="videoStatus" class="status-box text-sm text-slate-300 mt-3"></div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 grid gap-6 md:grid-cols-3 text-sm text-slate-200">
+                        <div class="glass-card border border-slate-800 rounded-3xl p-6">
+                            <h3 class="font-semibold text-indigo-300 mb-2">API 연결 가이드</h3>
+                            <p>백엔드에서 프롬프트, 이미지, 영상 변환에 대한 REST 엔드포인트를 제공한 뒤 아래 <code class="bg-slate-900/70 px-1 rounded">API_ENDPOINTS</code> 값을 수정하세요.</p>
+                        </div>
+                        <div class="glass-card border border-slate-800 rounded-3xl p-6">
+                            <h3 class="font-semibold text-indigo-300 mb-2">워크플로우 자동화</h3>
+                            <p>각 단계는 완료 시 다음 입력 필드에 자동으로 반영되며, 상태 메시지와 로딩 스피너로 진행 상황을 안내합니다.</p>
+                        </div>
+                        <div class="glass-card border border-slate-800 rounded-3xl p-6">
+                            <h3 class="font-semibold text-indigo-300 mb-2">협업 확장</h3>
+                            <p>생성된 결과를 Notion, Slack 등 협업 도구와 연동하거나 히스토리 로그를 저장하도록 확장할 수 있습니다.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="border-l-4 border-green-500 pl-4">
-                    <h4 class="font-bold text-green-800">2단계 (4-6개월): 시스템 구축</h4>
-                    <p class="text-gray-600">CMS/CRM 통합, 재정 시스템 구축, 프로세스 표준화</p>
-                </div>
-                <div class="border-l-4 border-purple-500 pl-4">
-                    <h4 class="font-bold text-purple-800">3단계 (7-12개월): 운영 최적화</h4>
-                    <p class="text-gray-600">KPI 모니터링, 성과 평가, 지속적 개선</p>
-                </div>
-            </div>
-            <button onclick="hideImplementationPlan()" class="mt-6 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                닫기
-            </button>
-        </div>
+            </section>
+        </main>
+
+        <footer class="border-t border-slate-800 py-6 text-sm text-slate-400 text-center bg-slate-950/80">
+            Direct AI Media App · Mock integration ready for prompt → image → SORA2 video workflows
+        </footer>
     </div>
 
     <script>
-        // 차트는 실제 데이터 수집 후 구현 예정이므로 주석 처리
-        // Chart.js 설정 - 실제 운영 시작 후 데이터 기반으로 구현
-        /*
-        const ctx = document.getElementById('growthChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['실제 운영 시작 후', '데이터 수집을 통해', '구체적인 차트가', '표시됩니다'],
-                datasets: [{
-                    label: '측정 지표 예시',
-                    data: [0, 0, 0, 0],
-                    borderColor: '#3b82f6',
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    tension: 0.4
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-        */
-
-        // Modal 함수들
-        function showImplementationPlan() {
-            document.getElementById('implementationModal').classList.remove('hidden');
-            document.getElementById('implementationModal').classList.add('flex');
-        }
-
-        function hideImplementationPlan() {
-            document.getElementById('implementationModal').classList.add('hidden');
-            document.getElementById('implementationModal').classList.remove('flex');
-        }
-
-        // 스크롤 애니메이션
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+        const API_ENDPOINTS = {
+            prompt: '/api/prompts',
+            image: '/api/images',
+            video: '/api/videos'
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+        const USE_MOCK_API = true;
 
-        // 애니메이션 대상 요소들 관찰
-        document.querySelectorAll('.card-hover').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
+        function setStatus(step, message, type = 'info') {
+            const el = document.getElementById(`${step}Status`);
+            if (!el) return;
+            const baseClasses = 'status-box mt-3 text-sm rounded-xl px-3 py-2 border';
+            const classMap = {
+                info: 'bg-slate-900/60 border-slate-700 text-slate-200',
+                success: 'bg-emerald-500/20 border-emerald-400 text-emerald-100',
+                error: 'bg-red-500/20 border-red-400 text-red-100'
+            };
+            el.className = `${baseClasses} ${classMap[type] || classMap.info}`;
+            el.textContent = message;
+        }
+
+        function toggleLoading(step, isLoading) {
+            const button = document.getElementById(`${step}Btn`);
+            const spinner = document.getElementById(`${step}Spinner`);
+            if (button) {
+                button.disabled = isLoading;
+                button.classList.toggle('opacity-60', isLoading);
+                button.classList.toggle('cursor-not-allowed', isLoading);
+            }
+            if (spinner) {
+                spinner.classList.toggle('hidden', !isLoading);
+            }
+        }
+
+        async function requestAPI(type, payload) {
+            if (!USE_MOCK_API) {
+                const response = await fetch(API_ENDPOINTS[type], {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorMessage = await response.text();
+                    throw new Error(errorMessage || `${type} API 호출 중 오류가 발생했습니다.`);
+                }
+
+                return response.json();
+            }
+
+            await new Promise(resolve => setTimeout(resolve, 1200));
+            if (type === 'image') {
+                return {
+                    imageUrl: `https://images.unsplash.com/photo-1463107971871-fbac9ddb920f?auto=format&fit=crop&w=900&q=80&t=${Date.now()}`
+                };
+            }
+            if (type === 'video') {
+                return {
+                    videoUrl: 'https://samplelib.com/lib/preview/mp4/sample-5s.mp4'
+                };
+            }
+            if (type === 'prompt') {
+                return { prompt: payload?.prompt || '' };
+            }
+            throw new Error('지원되지 않는 API 타입입니다.');
+        }
+
+        function generatePrompt() {
+            const idea = document.getElementById('baseIdea').value.trim();
+            if (!idea) {
+                setStatus('prompt', '먼저 기본 아이디어를 입력해주세요.', 'error');
+                return;
+            }
+
+            const style = document.getElementById('stylePreset').value;
+            const mood = document.getElementById('moodPreset').value;
+            const camera = document.getElementById('cameraPreset').value;
+            const ratio = document.getElementById('ratioPreset').value;
+            const extra = document.getElementById('extraKeywords').value.trim();
+
+            let prompt = `${style}, ${mood} mood, ${camera}, ${ratio}. ${idea}`;
+            if (extra) {
+                prompt += `. Keywords: ${extra}`;
+            }
+
+            document.getElementById('promptOutput').value = prompt;
+            document.getElementById('videoPromptInput').value = prompt;
+            setStatus('prompt', '프롬프트가 생성되었습니다. 이미지 생성 버튼을 눌러 다음 단계로 진행하세요.', 'success');
+        }
+
+        async function generateImage() {
+            const prompt = document.getElementById('promptOutput').value.trim();
+            if (!prompt) {
+                setStatus('image', '프롬프트를 먼저 생성하거나 직접 입력해주세요.', 'error');
+                return;
+            }
+
+            toggleLoading('image', true);
+            setStatus('image', '이미지를 생성하는 중입니다. 잠시만 기다려주세요…', 'info');
+            try {
+                const { imageUrl } = await requestAPI('image', { prompt });
+                if (imageUrl) {
+                    document.getElementById('imagePreview').src = imageUrl;
+                    setStatus('image', '이미지가 생성되었습니다. 영상 생성 단계로 넘어갈 수 있습니다.', 'success');
+                    document.getElementById('videoPromptInput').value = prompt;
+                } else {
+                    throw new Error('이미지 URL이 반환되지 않았습니다.');
+                }
+            } catch (error) {
+                setStatus('image', error.message || '이미지 생성 중 문제가 발생했습니다.', 'error');
+            } finally {
+                toggleLoading('image', false);
+            }
+        }
+
+        async function generateVideo() {
+            const prompt = document.getElementById('videoPromptInput').value.trim();
+            if (!prompt) {
+                setStatus('video', '영상 프롬프트가 비어 있습니다. 프롬프트를 확인해주세요.', 'error');
+                return;
+            }
+
+            toggleLoading('video', true);
+            setStatus('video', 'SORA2 영상 생성을 요청했습니다. 처리 완료까지 기다려주세요…', 'info');
+            try {
+                const { videoUrl } = await requestAPI('video', { prompt });
+                if (videoUrl) {
+                    const videoEl = document.getElementById('videoPreview');
+                    videoEl.src = videoUrl;
+                    videoEl.load();
+                    setStatus('video', '영상이 준비되었습니다. 재생 버튼을 눌러 확인하세요.', 'success');
+                } else {
+                    throw new Error('영상 URL이 반환되지 않았습니다.');
+                }
+            } catch (error) {
+                setStatus('video', error.message || '영상 생성 중 문제가 발생했습니다.', 'error');
+            } finally {
+                toggleLoading('video', false);
+            }
+        }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9807eb9f92dfaa83',t:'MTc1ODEwNDk0NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
