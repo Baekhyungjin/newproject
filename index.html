@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>장애물 점프 넘기 게임</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --accent: #f59e0b;
+      --text: #e5e7eb;
+      --danger: #f43f5e;
+      --tempt: #8b5cf6;
+      --bible: #22c55e;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Noto Sans KR", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at 20% 20%, #1f2937 0, var(--bg) 40%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    main {
+      max-width: 960px;
+      width: 100%;
+    }
+
+    header {
+      background: var(--panel);
+      border: 1px solid #1f2937;
+      border-radius: 16px;
+      padding: 20px 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(28px, 5vw, 36px);
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: #9ca3af;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid #1f2937;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    canvas {
+      width: 100%;
+      background: linear-gradient(to bottom, #0b1224, #0f172a);
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+    }
+
+    .info p {
+      margin: 0 0 8px;
+      line-height: 1.5;
+      color: #cbd5e1;
+    }
+
+    .info code {
+      background: #1f2937;
+      color: var(--accent);
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 13px;
+    }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #0b1224;
+      border-radius: 10px;
+      padding: 10px 12px;
+      border: 1px solid #111827;
+    }
+
+    .swatch {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+    }
+
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 6px 0;
+    }
+
+    .bar {
+      flex: 1;
+      margin-left: 8px;
+      height: 10px;
+      background: #111827;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid #1f2937;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #22c55e, #3b82f6);
+      transition: width 150ms ease-out;
+    }
+
+    .status {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #0b1224;
+      border: 1px solid #1f2937;
+      color: #e2e8f0;
+      min-height: 44px;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>믿음의 점프: 사단과 유혹을 넘어서</h1>
+      <p class="subtitle">
+        사단과 유혹을 뛰어넘고, 성경 에너지를 먹어 더 높이 점프하세요. 간단한 조작으로 누구나 즐길 수 있는 미니 러너 게임입니다.
+      </p>
+    </header>
+
+    <div class="grid">
+      <section class="panel">
+        <canvas id="game" width="900" height="360"></canvas>
+      </section>
+
+      <aside class="panel info">
+        <p><strong>조작</strong> — <code>Space</code> 또는 <code>↑</code>로 점프, <code>R</code>로 리셋.</p>
+        <p>성경을 먹으면 잠시 동안 <strong>점프력이 강화</strong>되어 더 높이 뛸 수 있습니다.</p>
+
+        <div class="legend">
+          <div class="legend-item">
+            <div class="swatch" style="background: var(--danger);"></div>
+            <div>사단 장애물</div>
+          </div>
+          <div class="legend-item">
+            <div class="swatch" style="background: var(--tempt);"></div>
+            <div>유혹 장애물</div>
+          </div>
+          <div class="legend-item">
+            <div class="swatch" style="background: var(--bible);"></div>
+            <div>성경 (점프 에너지)</div>
+          </div>
+        </div>
+
+        <div class="stat">
+          <span>거리</span>
+          <div id="distance" aria-live="polite">0 m</div>
+        </div>
+        <div class="stat">
+          <span>성경 버프</span>
+          <div class="bar">
+            <div id="buff-bar" class="bar-fill"></div>
+          </div>
+        </div>
+        <div class="status" id="status">Space로 달리기 시작!</div>
+      </aside>
+    </div>
+  </main>
+
+  <script>
+    const canvas = document.getElementById("game");
+    const ctx = canvas.getContext("2d");
+    const distanceEl = document.getElementById("distance");
+    const statusEl = document.getElementById("status");
+    const buffBar = document.getElementById("buff-bar");
+
+    const GROUND = canvas.height - 60;
+    const gravity = 0.7;
+    const baseJump = 13;
+
+    const state = {
+      running: false,
+      gameOver: false,
+      distance: 0,
+      tick: 0,
+      buffTime: 0,
+      entities: {
+        player: { x: 70, y: GROUND, vy: 0, size: 36, onGround: true },
+        obstacles: [],
+        bibles: []
+      }
+    };
+
+    function reset() {
+      state.running = false;
+      state.gameOver = false;
+      state.distance = 0;
+      state.tick = 0;
+      state.buffTime = 0;
+      state.entities.obstacles = [];
+      state.entities.bibles = [];
+      state.entities.player = { x: 70, y: GROUND, vy: 0, size: 36, onGround: true };
+      statusEl.textContent = "Space로 달리기 시작!";
+    }
+
+    function spawnObstacle() {
+      const isSatan = Math.random() > 0.5;
+      const width = 30 + Math.random() * 30;
+      const height = 30 + Math.random() * 30;
+      state.entities.obstacles.push({
+        x: canvas.width + 40,
+        y: GROUND - height + 6,
+        width,
+        height,
+        type: isSatan ? "사단" : "유혹",
+        color: isSatan ? getComputedStyle(document.documentElement).getPropertyValue("--danger") : getComputedStyle(document.documentElement).getPropertyValue("--tempt")
+      });
+    }
+
+    function spawnBible() {
+      state.entities.bibles.push({
+        x: canvas.width + 40,
+        y: GROUND - 120 - Math.random() * 60,
+        size: 24
+      });
+    }
+
+    function jump() {
+      if (!state.running) {
+        state.running = true;
+        statusEl.textContent = "도약 중! 사단과 유혹을 넘으세요.";
+      }
+      if (state.gameOver) return;
+
+      const boost = state.buffTime > 0 ? 5 : 0;
+      if (state.entities.player.onGround) {
+        state.entities.player.vy = -(baseJump + boost);
+        state.entities.player.onGround = false;
+      }
+    }
+
+    function update() {
+      if (!state.running || state.gameOver) return;
+      state.tick++;
+      state.distance += 0.05;
+      distanceEl.textContent = `${state.distance.toFixed(1)} m`;
+
+      const player = state.entities.player;
+      player.vy += gravity;
+      player.y += player.vy;
+
+      if (player.y >= GROUND) {
+        player.y = GROUND;
+        player.vy = 0;
+        player.onGround = true;
+      }
+
+      if (state.tick % 90 === 0) spawnObstacle();
+      if (state.tick % 300 === 0) spawnBible();
+
+      const speed = 4 + Math.min(6, state.distance / 80);
+
+      state.entities.obstacles = state.entities.obstacles.filter(obs => {
+        obs.x -= speed;
+        return obs.x + obs.width > -10;
+      });
+
+      state.entities.bibles = state.entities.bibles.filter(b => {
+        b.x -= speed * 0.9;
+        return b.x + b.size > -10;
+      });
+
+      handleCollisions();
+
+      if (state.buffTime > 0) {
+        state.buffTime -= 1 / 60;
+      }
+      buffBar.style.width = `${Math.max(0, Math.min(1, state.buffTime / 6)) * 100}%`;
+    }
+
+    function handleCollisions() {
+      const p = state.entities.player;
+      for (const obs of state.entities.obstacles) {
+        if (rectsOverlap(p.x, p.y - p.size, p.size, p.size, obs.x, obs.y, obs.width, obs.height)) {
+          state.gameOver = true;
+          statusEl.textContent = `게임 오버! ${obs.type}에 걸렸어요. R로 재시작.`;
+        }
+      }
+
+      state.entities.bibles = state.entities.bibles.filter(b => {
+        if (rectsOverlap(p.x, p.y - p.size, p.size, p.size, b.x, b.y, b.size, b.size)) {
+          state.buffTime = 6;
+          statusEl.textContent = "성경 에너지! 점프력이 강화됐어요.";
+          return false;
+        }
+        return true;
+      });
+    }
+
+    function rectsOverlap(x1, y1, w1, h1, x2, y2, w2, h2) {
+      return x1 < x2 + w2 && x1 + w1 > x2 && y1 < y2 + h2 && y1 + h1 > y2;
+    }
+
+    function drawBackground() {
+      ctx.fillStyle = "#0b1224";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.strokeStyle = "rgba(255,255,255,0.05)";
+      ctx.beginPath();
+      for (let i = 0; i < canvas.width; i += 30) {
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, canvas.height);
+      }
+      ctx.stroke();
+
+      ctx.fillStyle = "#111827";
+      ctx.fillRect(0, GROUND + 6, canvas.width, 60);
+      ctx.fillStyle = "#0b1224";
+      ctx.fillRect(0, GROUND + 20, canvas.width, 40);
+    }
+
+    function roundRectPath(x, y, w, h, r = 8) {
+      const radius = Math.min(r, w / 2, h / 2);
+      ctx.beginPath();
+      ctx.moveTo(x + radius, y);
+      ctx.lineTo(x + w - radius, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + radius);
+      ctx.lineTo(x + w, y + h - radius);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
+      ctx.lineTo(x + radius, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - radius);
+      ctx.lineTo(x, y + radius);
+      ctx.quadraticCurveTo(x, y, x + radius, y);
+      ctx.closePath();
+    }
+
+    function drawPlayer() {
+      const p = state.entities.player;
+      ctx.fillStyle = "#38bdf8";
+      roundRectPath(p.x, p.y - p.size, p.size, p.size, 8);
+      ctx.fill();
+
+      if (state.buffTime > 0) {
+        ctx.strokeStyle = "#22c55e";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+      }
+    }
+
+    function drawObstacles() {
+      for (const obs of state.entities.obstacles) {
+        ctx.fillStyle = obs.color;
+        roundRectPath(obs.x, obs.y, obs.width, obs.height, 6);
+        ctx.fill();
+        ctx.fillStyle = "#0b1224";
+        ctx.font = "14px 'Noto Sans KR', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(obs.type, obs.x + obs.width / 2, obs.y + obs.height / 2 + 5);
+      }
+    }
+
+    function drawBibles() {
+      for (const b of state.entities.bibles) {
+        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--bible");
+        roundRectPath(b.x, b.y, b.size, b.size, 6);
+        ctx.fill();
+        ctx.fillStyle = "#0b1224";
+        ctx.font = "13px 'Noto Sans KR', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("성경", b.x + b.size / 2, b.y + b.size / 2 + 5);
+      }
+    }
+
+    function loop() {
+      update();
+      drawBackground();
+      drawObstacles();
+      drawBibles();
+      drawPlayer();
+
+      if (state.gameOver) {
+        ctx.fillStyle = "rgba(0,0,0,0.5)";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#f1f5f9";
+        ctx.font = "28px 'Noto Sans KR', sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText("게임 오버! R로 다시 시작하세요.", canvas.width / 2, canvas.height / 2);
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space" || e.code === "ArrowUp") {
+        e.preventDefault();
+        jump();
+      }
+      if (e.code === "KeyR") {
+        reset();
+      }
+    });
+
+    reset();
+    loop();
+  </script>
+</body>
+</html>
